@@ -17,8 +17,7 @@ def get_ttyd():
 
 
 def terminal(
-    cmd: str = "echo terminal-speaking... && sleep 99999",
-    writable: bool = True,  
+    cmd: str = "echo terminal-speaking... && sleep 99999", 
     host: str = "http://localhost",
     port: int = 7681,
     exit_on_disconnect: bool = True,
@@ -29,13 +28,12 @@ def terminal(
     if port == 0:
         port = get_port((5000, 7000))
 
-    flags = f"--port {port} "
+    flags = f"-port {port} -W"
     if exit_on_disconnect:
         flags += "--once "
 
-    # 根据 writable 参数动态添加 -W 选项
-    if  writable:
-        cmd += " -W"
+   
+  
 
     ttydproc = subprocess.Popen(
         f"ttyd {flags} {cmd}",
