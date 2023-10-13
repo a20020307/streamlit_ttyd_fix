@@ -6,29 +6,12 @@ from port_for import get_port
 from streamlit.components.v1 import iframe
 
 
-def is64bit():
-    return "64" in platform.machine()
 
-
-def isARM():
-    return "aarch" in platform.machine() or "arm" in platform.machine()
 
 
 def get_ttyd():
 
-    if psutil.WINDOWS:
-        ttyd = None
-
-    if psutil.MACOS or psutil.LINUX:
-        if isARM():
-            if is64bit():
-                ttyd = "./binary/ttyd.aarch64"
-            else:
-                ttyd = "./binary/ttyd.arm"
-
-        else:  # x86
-            # we dont care here if 64bit
-            ttyd = "./binary/ttyd.x86_64"
+    ttyd='/usr/local/bin/ttyd'
 
     return ttyd
 
@@ -37,7 +20,7 @@ def terminal(
     cmd: str = "echo terminal-speaking... && sleep 99999",
     readonly: bool = False,
     host: str = "http://localhost",
-    port: int = 0,
+    port: int = 7681,
     exit_on_disconnect: bool = True,
     height: int = 400,
 ):
