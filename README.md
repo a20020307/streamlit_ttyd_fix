@@ -6,7 +6,7 @@ Open an issue if you need support for windows or other platforms.
 
 ### Installation
 
-`pip install git+https://github.com/NeveIsa/streamlit_ttyd`
+`pip install git+https://github.com/a20020307/streamlit_ttyd_fix`
 
 
 
